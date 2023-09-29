@@ -1,36 +1,33 @@
-function Box ( {dailyData} ) {
+import styles from './page.module.css';
+
+function Box ({ doneChart, changeDone, dailyData, week, day }) {
     return (
-        <th>
+        <td className={`${styles.box} ${doneChart[week-1][day-1] === 1 ? styles.doneBox : ''} ${doneChart[week-1][day-1] === 2 ? styles.missedBox : ''}`} onClick={() => changeDone(week, day)}>
         {dailyData}
-        </th>
+        </td>
     )
 }
 
-function Row ({ weeklyData, unit }) {
+function Row ({ weeklyData, unit, doneChart, changeDone }) {
     return (
-        <tr>
-            <th>{weeklyData[0]}</th>
-            {weeklyData[1][unit].map((el, index) => <Box key={index} dailyData={el}/>)}
+        <tr className={styles.row}>
+            <th className={styles.sideHeader}>{weeklyData[0]}</th>
+            {weeklyData[1][unit].map((el, index) => <Box key={index} doneChart={doneChart} changeDone={changeDone} dailyData={el} week={weeklyData[0]} day={index+1}/>)}
         </tr>
     )
 }
-export default function Table ({ regimen, unit }) {
+export default function Table ({ regimen, unit, doneChart, changeDone }) {
+    const days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday']
     return (
-        <table>
-            <thead>
-                <tr>
+        <table className={styles.table}>
+            <thead className={styles.thead}>
+                <tr className={styles.row}>
                     <th>Week</th>
-                    <th>Monday</th>
-                    <th>Tuesday</th>
-                    <th>Wednesday</th>
-                    <th>Thursday</th>
-                    <th>Friday</th>
-                    <th>Saturday</th>
-                    <th>Sunday</th>
+                    {days.map(day => <th key={day}>{day}</th>)}
                 </tr>
             </thead>
             <tbody>
-                {Object.entries(regimen).map((el, index) => <Row key={index} weeklyData={el} unit={unit}/>)}
+                {Object.entries(regimen).map((el, index) => <Row key={index} weeklyData={el} unit={unit} doneChart={doneChart} changeDone={changeDone}/>)}
             </tbody>
         </table>
     )
