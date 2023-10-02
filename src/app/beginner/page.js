@@ -45,16 +45,18 @@ export default function Beginner () {
                 <br></br>
                 <p>The main goal of each day is just to complete the amount of miles that are listed below. The pace at which the mileage must be completed in is up to each individual runner. Many will have to walk large portions of their training and that is OK. The goal is just to finish.</p>
                 <br></br>
-                <p>Rest: The body needs to rest to allow it to recover. Without proper recovery, your body will not be able to perform to its fullest abilities. The rest days are strategically placed before a full 3 days of training as well as right before the week&#39;s long run.</p>
+                <p><b>Rest:</b> The body needs to rest to allow it to recover. Without proper recovery, your body will not be able to perform to its fullest abilities. The rest days are strategically placed before a full 3 days of training as well as right before the week&#39;s long run.</p>
                 <br></br>
-                <p>Cross-Training: This is a way for our body to train slightly different body parts and stay active while still allowing our body to recover. This includes walking, swimming, cycling, or any other aerobic exercist such as a sport.</p>
+                <p><b>Cross-Training:</b> This is a way for our body to train slightly different body parts and stay active while still allowing our body to recover. This includes walking, swimming, cycling, or any other aerobic exercist such as a sport.</p>
                 <br></br>
                 <p>Click on each day on the chart once to complete that day. Click on it again if you missed that day. It&#39;s OK!</p>
             </div>
+            {!loading ? 
             <ButtonGroup className={styles.buttonGroup} variant='outlined'>
                 <Button onClick={() => unitChange('miles')} style={{backgroundColor: unit==='miles' ? '#90caf9' : 'transparent'}}>Miles</Button>
                 <Button onClick={() => unitChange('kms')} style={{backgroundColor: unit==='kms' ? '#90caf9' : 'transparent'}}>KMs</Button>
-            </ButtonGroup>
+            </ButtonGroup> : null
+            }
             {!loading ? <Table regimen={beginner} unit={unit} doneChart={doneChart} changeDone={changeDone}/> : null}
         </main>
     )

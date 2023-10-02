@@ -41,20 +41,24 @@ export default function Intermediate () {
         <main className={styles.programMain}>
             <div className={styles.title}>Intermediate Marathon Program</div>
             <div className={styles.description}>
-                <p>This 18-week beginner training program is perfect for those that have minimal running training and no marathon experience. Running a marathon is not easy. It takes a lot of time and dedication to prepare yourself to run your first marathon. This program will gently ease you into a steady routine until you are ready to tackle the next challenge.</p>
+                <p>This 18-week intermediate training program is for those that either have previous running training or have already run a marathon before. This program is somewhat of a continuation to the beginner training program. It will train you to level up your running and improve your personal best marathon time.</p>
                 <br></br>
-                <p>The main goal of each day is just to complete the amount of miles that are listed below. The pace at which the mileage must be completed in is up to each individual runner. Many will have to walk large portions of their training and that is OK. The goal is just to finish.</p>
+                <p>The main differences between this program and the beginner program is the increase of intensity and mileage per week. As an intermediate runner, the amount of rest days have been decreased to just 1. Shorter runs keep the body ready and prepped to continue running while not tiring it out too much. Some Saturdays have also been changed to running at an increased pace.</p>
                 <br></br>
-                <p>Rest: The body needs to rest to allow it to recover. Without proper recovery, your body will not be able to perform to its fullest abilities. The rest days are strategically placed before a full 3 days of training as well as right before the week&#39;s long run.</p>
+                <p><b>Rest:</b> The body needs to rest to allow it to recover. Without proper recovery, your body will not be able to perform to its fullest abilities. The rest days are strategically placed before a full 3 days of training as well as right before the week&#39;s long run.</p>
                 <br></br>
-                <p>Cross-Training: This is a way for our body to train slightly different body parts and stay active while still allowing our body to recover. This includes walking, swimming, cycling, or any other aerobic exercist such as a sport.</p>
+                <p><b>Cross-Training:</b> This is a way for our body to train slightly different body parts and stay active while still allowing our body to recover. This includes walking, swimming, cycling, or any other aerobic exercist such as a sport.</p>
+                <br></br>
+                <p><b>Pace:</b> Run at an increased pace and push your body! Set a goal marathon time and make sure you are running at that pace.</p>
                 <br></br>
                 <p>Click on each day on the chart once to complete that day. Click on it again if you missed that day. It&#39;s OK!</p>
             </div>
+            {!loading ? 
             <ButtonGroup className={styles.buttonGroup} variant='outlined'>
                 <Button onClick={() => unitChange('miles')} style={{backgroundColor: unit==='miles' ? '#90caf9' : 'transparent'}}>Miles</Button>
                 <Button onClick={() => unitChange('kms')} style={{backgroundColor: unit==='kms' ? '#90caf9' : 'transparent'}}>KMs</Button>
-            </ButtonGroup>
+            </ButtonGroup> : null
+            }
             {!loading ? <Table regimen={intermediate} unit={unit} doneChart={doneChart} changeDone={changeDone}/> : null}
         </main>
     )

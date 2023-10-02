@@ -2,7 +2,7 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 5vw;
+  padding: 15vh 5vw;
   min-height: 100vh;
 }
 
@@ -12,6 +12,32 @@
   align-items: center;
   margin: 4vh 0 0 0;
   padding: 5vw;
+}
+
+.intro {
+  display: flex;
+  flex-direction: row;
+  gap: 2vw;
+  margin: 0 0 2vh 0;
+}
+
+.intro > div {
+  display: flex;
+  flex-direction: column;
+  gap: 2vh;
+}
+
+.programs {
+  display: flex;
+  flex-direction: row;
+  gap: 2vw;
+  margin: 0 0 2vh 0;
+}
+
+.programs > div {
+  display: flex;
+  flex-direction: column;
+  gap: 2vh;
 }
 
 .title {
@@ -63,6 +89,9 @@
   height: 4rem;
   border: 1px solid black;
 }
+.box:hover {
+  box-shadow: 0 5px 15px #90caf9;
+}
 
 .doneBox {
   background-color: #66bb6a;
@@ -70,4 +99,35 @@
 
 .missedBox {
   background-color: rgb(255, 88, 88);
+}
+
+@media(max-width: 800px) {
+  .main {
+    padding: 30vh 5vw 0;
+  }
+
+  .intro {
+    flex-direction: column;
+  }
+  
+  .programs {
+    flex-direction: column;
+  }
+
+  .images {
+    width: 100%;
+    height: 100%;
+  }
+
+  .programMain {
+    padding: 25vh 5vw 0;
+  }
+
+  .description {
+    width: 90%;
+  }
+  
+  .table {
+    font-size: 0.6rem;
+  }
 }
